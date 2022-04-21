@@ -5,23 +5,26 @@
     <div class="--informations">
       <div class="top">
         <p class="name">
-          subway
+          {{info_restaurant.name}}
         </p>
         <p class="note">
-          <span>4.5</span>
+          <span>{{info_restaurant.note}}</span>
         </p>
       </div>
       <p class="time">
-        20-30mn
+        {{info_restaurant.drive_time}}
       </p>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name:"RestaurantCArd"
 
+export default {
+  name:"RestaurantCArd",
+  props: {
+    info_restaurant:Object
+  }
 }
 </script>
 

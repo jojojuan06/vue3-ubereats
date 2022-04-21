@@ -1,11 +1,13 @@
 <template>
-  <div class="restaurant--row">
-    <h2 class="title">Nos restaurant</h2>
-    <div class="wrapper--card">
-         <!-- 3 importation dans le template -->
-        <RestaurantCard v-for="(card,index) in 3" :key='index'/>
-    </div> 
-  </div>
+    <div class="restaurant--row">
+        <h2 class="title">
+            Nos restaurant
+        </h2>
+        <div class="wrapper--card">
+            <!-- 3 importation dans le template -->
+            <RestaurantCard v-for="(card,index) in tree_restaurant" :info_restaurant ="card" :key='index'/>
+        </div> 
+    </div>
 </template>
 
 <script>
@@ -17,6 +19,9 @@ export default {
     components: {
         RestaurantCard,
     },
+    props : {
+        tree_restaurant:Array
+    }
 }
 </script>
 

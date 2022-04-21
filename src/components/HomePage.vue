@@ -1,14 +1,16 @@
 <template>
     <div class="home">
         <!-- declare dans le template    -->
-        <RestaurantRow/>
+        <!-- ajoute de la props restaure pour recupêrer les data -->
+        <RestaurantRow v-for="(data,index) in data_restaurant" :key='index' :tree_restaurant="data"/>
     </div>
 </template>
 
 <script>
 //IMPORT
 import BDD from '../BDD';
-import { onMounted } from 'vue';
+// destructuring appleler directement de vue
+import { onMounted,ref } from 'vue';
 //COMPONENTS
 import RestaurantRow from "./RestaurantRow.vue"
 export default {
@@ -31,7 +33,9 @@ export default {
             }
         }
         //tableaux qui contiendra les restaurant (3 resto par default de restaurantrow)
-        let data_restaurant = []
+        //ref un accès direct aux éléments DOM sous-jacents. Pour ce faire, nous pouvons utiliser l' refattribut spécial
+        //ref communiquer au v-for que la valeur de data restaurant a changer , il prend en compte en consequence
+        let data_restaurant = ref([]);
             // ou function makerestaurant()
             //boucle restaurant boucle sur chaque element de la bdd
         const makeDataRestaurant = () => {
@@ -44,21 +48,26 @@ export default {
                 if (three_restaurant.length == 2) {
                 // chaque tour de boucle ont push le new restaurant dans le tableau
                 three_restaurant.push(new_restaurant);
-                data_restaurant.push(three_restaurant);
+                //.value faire reference au tableau datarestaurant (egale la valuer dans la reference)
+                data_restaurant.value.push(three_restaurant);
                 //et on vide tree restaurant
                 three_restaurant = [];
                 } else {
                 three_restaurant.push(new_restaurant);
                 }
             }
-            console.log(data_restaurant);
         }
         //cycle de vie au moment de l'affichage de l'aaplication
-        onMounted(makeDataRestaurant)
+        onMounted(makeDataRestaurant);
+
+        //return
+         return  {
+             data_restaurant
+             }
     },
 }
 </script>
 
 <style>
 
-</style>
+</style> 
