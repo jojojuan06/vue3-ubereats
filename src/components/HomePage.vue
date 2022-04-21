@@ -143,6 +143,9 @@ export default {
                     display: flex;
                     align-items: center;
                     padding: 10px;
+                    &:hover {
+                        background-color:#f6f6f6  
+                    }
 
                     .wrapper--img{
                         height: 60px;

@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <HomePage/>
+    <!-- initialiser le router view -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 //appeler
-import HomePage from '@/components/HomePage'
+// import HomePage from '@/components/HomePage'
 
 export default {
   name: 'App',
   //declarer
   components:{
-    HomePage,
   }
 }
 </script>
