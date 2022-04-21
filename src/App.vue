@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <RestaurantRow />
+    <HomePage/>
   </div>
 </template>
 
 <script>
 //appeler
-import RestaurantRow from './components/RestaurantRow.vue'
+import HomePage from '@/components/HomePage'
 
 export default {
   name: 'App',
   //declarer
   components:{
-    RestaurantRow,
+    HomePage,
   }
 }
 </script>
